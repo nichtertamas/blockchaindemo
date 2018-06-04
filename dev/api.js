@@ -19,11 +19,11 @@ app.get('/blockchain', function (req, res) {
 
 
 //create a new, pending transaction
-app.get('/transaction', function(req, res) {
+app.post('/transaction', function(req, res) {
 	//for testing, change back to post
-	const blockIndex = bitcoin.createNewTransaction(Math.floor((Math.random() * 100) + 1), Math.random().toString(36).substring(7), Math.random().toString(36).substring(7));
+	//const blockIndex = bitcoin.createNewTransaction(Math.floor((Math.random() * 100) + 1), Math.random().toString(36).substring(7), Math.random().toString(36).substring(7));
 	
-	//const blockIndex = bitcoin.createNewTransaction(req.body.amount, req.body.sender, req.body.recipient);
+	const blockIndex = bitcoin.createNewTransaction(req.body.amount, req.body.sender, req.body.recipient);
 	res.json({note: `Transaction willbe added in block ${blockIndex}.`});
 });
 
